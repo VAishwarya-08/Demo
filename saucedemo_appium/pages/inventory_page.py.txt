@@ -1,0 +1,22 @@
+from appium.webdriver.common.appiumby import AppiumBy
+from pages.base_page import BasePage
+
+class InventoryPage(BasePage):
+    FIRST_ITEM = (AppiumBy.ACCESSIBILITY_ID, "test-Item title")
+    FIRST_PRICE = (AppiumBy.ACCESSIBILITY_ID, "test-Price")
+    ADD_TO_CART = (AppiumBy.ACCESSIBILITY_ID, "test-ADD TO CART")
+    CART_ICON = (AppiumBy.ACCESSIBILITY_ID, "test-Cart")
+    SORT_DROPDOWN = (AppiumBy.ACCESSIBILITY_ID, "test-Selector")
+
+    def verify_product(self):
+        return self.get_text(self.FIRST_ITEM), self.get_text(self.FIRST_PRICE)
+
+    def add_to_cart(self):
+        self.click(self.ADD_TO_CART)
+
+    def go_to_cart(self):
+        self.click(self.CART_ICON)
+
+    def sort_by_price(self):
+        self.click(self.SORT_DROPDOWN)
+        self.driver.find_element(AppiumBy.XPATH, "//android.widget.TextView[@text='Price (low to high)']").click()

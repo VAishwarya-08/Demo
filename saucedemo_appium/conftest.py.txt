@@ -1,0 +1,16 @@
+import pytest
+from utils.driver_setup import get_driver
+import os
+
+@pytest.fixture
+def driver(request):
+    driver = get_driver()
+    yield driver
+    if request.node.rep_call.failed:
+        screenshot_path = os.path.join("screenshots", f"{request.node.name}.png")
+        driver.save_screenshot(screenshot_path)
+    driver.quit()
+
+def pytest_runtest_makereport(item, call):
+    if "driver" in item.fixturenames:
+        item.rep_call = call

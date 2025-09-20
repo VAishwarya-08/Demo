@@ -1,0 +1,16 @@
+from appium.webdriver.common.appiumby import AppiumBy
+from pages.base_page import BasePage
+
+class LoginPage(BasePage):
+    USERNAME = (AppiumBy.ACCESSIBILITY_ID, "test-Username")
+    PASSWORD = (AppiumBy.ACCESSIBILITY_ID, "test-Password")
+    LOGIN_BTN = (AppiumBy.ACCESSIBILITY_ID, "test-LOGIN")
+    ERROR_MSG = (AppiumBy.ACCESSIBILITY_ID, "test-Error")
+
+    def login(self, username, password):
+        self.enter_text(self.USERNAME, username)
+        self.enter_text(self.PASSWORD, password)
+        self.click(self.LOGIN_BTN)
+
+    def get_error(self):
+        return self.get_text(self.ERROR_MSG)

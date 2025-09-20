@@ -1,0 +1,8 @@
+from appium.webdriver.common.appiumby import AppiumBy
+from pages.base_page import BasePage
+
+class CartPage(BasePage):
+    CART_ITEM = (AppiumBy.ACCESSIBILITY_ID, "test-Item title")
+
+    def get_cart_item(self):
+        return self.get_text(self.CART_ITEM)

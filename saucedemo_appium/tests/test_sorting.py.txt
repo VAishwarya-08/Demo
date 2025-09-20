@@ -1,0 +1,10 @@
+def test_sort_by_price(driver):
+    from pages.login_page import LoginPage
+    from pages.inventory_page import InventoryPage
+
+    LoginPage(driver).login("standard_user", "secret_sauce")
+    inventory = InventoryPage(driver)
+    inventory.sort_by_price()
+    prices = driver.find_elements_by_xpath("//android.widget.TextView[contains(@text,'$')]")
+    price_values = [float(p.text.replace("$", "")) for p in prices]
+    assert price_values == sorted(price_values)
