@@ -2,7 +2,7 @@
 
 Automated test suite for SauceDemo mobile web using Python, Appium, and Pytest.
 
-## 📦 Features
+##  Features
 - Page Object Model (POM)
 - Explicit waits
 - Stable locators (ID/accessibility ID)
@@ -20,3 +20,4 @@ Automated test suite for SauceDemo mobile web using Python, Appium, and Pytest.
 3. Run tests:
    ```bash
    pytest
+
